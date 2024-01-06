@@ -1,0 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Roboto+Mono:wght@300;400;500&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+:root {
+  --pink-default: rgb(240, 162, 175);
+  --shadow-default: 0 5px 2px rgba(0, 0, 0, 0.5);
+  --bg-default: rgb(195, 175, 145);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+nav.navbar {
+  font-size: 1rem;
+  padding: 1.5rem 3rem;
+  background-color: var(--bg-default);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+}
+
+nav a {
+  color: white;
+}
+
+a.nav-icon {
+  font-size: 1.5rem;
+}
+
+a.nav-icon span {
+  color: black;
+}
+
+.nav-link {
+  display: flex;
+  gap: 2rem;
+}
+
+.searchbar {
+  width: 20rem;
+  height: 2rem;
+  position: absolute;
+  top: 100%;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: black;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: 0.2s linear;
+}
+
+.searchbar input {
+  width: 100%;
+  height: 100%;
+  font-size: 1.1rem;
+}
+
+.searchbar label {
+  font-size: 1.1rem;
+  margin-right: 0.5rem;
+}
+
+.searchbar.active {
+  transform: scaleY(1);
+}
+
+.shopping-cart {
+  position: absolute;
+  top: 100%;
+  right: -100%;
+  height: 90vh;
+  width: 25rem;
+  background-color: white;
+  color: black;
+  transition: 0.4s linear;
+  overflow-y: scroll;
+}
+
+.shopping-cart.active {
+  right: 0;
+}
+
+.shopping-cart .shop-item {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 2px black dashed;
+}
+
+.shopping-cart img {
+  width: 3rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.shopping-cart .simbol {
+  display: inline-block;
+  padding: 0 0.1rem;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+div.cart-summary {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+}
+
+div.form-buyer {
+  text-align: center;
+  /* margin-top: 0.5rem; */
+  padding: 1rem;
+  border-radius: 2%;
+  box-shadow: var(--shadow-default);
+}
+
+div.form-buyer input {
+  padding: 0 1rem;
+}
+
+div.form-buyer button {
+  background-color: rgba(0, 0, 0,0.7);
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 0.9rem;
+  cursor: pointer;
+}
+
+div.form-buyer button:hover {
+  background-color: rgba(0,0,0,0.9);
+}
+
+.nav-extra {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link a, .nav-extra a {
+  display: inline-block;
+}
+
+.nav-extra a.hamburger-icon {
+  display: none;
+}
+
+.nav-link a:hover, .nav-extra a:hover {
+  color: black;
+}
+
+.nav-link a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.1rem;
+  border-bottom: 1px black solid;
+  transform: scaleX(0);
+}
+
+.nav-link a:hover::after {
+  transform: scaleX(0.5);
+  transition: 0.1s linear;
+}
+
+section {
+  min-height: 100vh;
+}
+
+section.hero {
+  position: relative;
+  background-image: url(../image/hero.png);
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(rgba(0,0,0,1) 85%, rgba(0,0,0,0));
+}
+
+.hero main {
+  margin-top: 13rem;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  top: -10%;
+}
+
+.hero main h1 {
+  font-size: 3rem;
+}
+
+.hero main p {
+  font-size: 1.5rem;
+}
+
+.hero main button {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.hero main button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.9)
+}
+
+section#about, section#menu, section#contact, section#product {
+  padding: 7rem 3rem 1rem;
+}
+
+section .title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-image img{
+  width: 480px;
+  mask-image: url(/image/mask3.png);
+  mask-size: 75%;
+  mask-repeat: no-repeat;
+  mask-position: center;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.about-text h3 {
+  font-size: 2rem;
+}
+
+.about-text p {
+  font-size: 1.5rem;
+}
+
+.menu > p {
+  text-align: center;
+}
+
+div.menu-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+.product-container {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.product-card {
+  padding: 2rem;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 5%;
+}
+
+.product-icon {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.product-icon a {
+  display: block;
+  color: white;
+  border: 1px white solid;
+  padding: 0.8rem;
+  border-radius: 50%;
+}
+
+.product-icon a i{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-icon a:hover {
+  color: black;
+  border: 1px black solid;
+}
+
+.product-image img{
+  height: 12rem;
+  border-radius: 50%;
+}
+
+.product-price {
+  font-size: 1rem;
+}
+
+section.contact {
+  margin: 3rem;
+}
+
+div.card {
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card img {
+  height: 240px;
+  border-radius: 50%;
+}
+
+div.contact-container {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 7rem;
+  align-items: center;
+  background-color: var(--pink-default);
+}
+
+div.map iframe{
+  width: 480px;
+  height: 360px;
+}
+
+div.form-container {
+  padding: 5rem 2rem 5rem 2rem;
+  border: 2px rgb(227, 118, 136) solid;
+  border-radius: 5%;
+}
+
+div.form-container .input-group {
+  margin-bottom: 1rem;
+}
+
+div.form-container .input-group input {
+  width: 20rem;
+  height: 1rem;
+  border: none;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 5%;
+}
+
+div.form-container .input-group i {
+  font-size: 2rem;
+}
+
+div.form-container form button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  background-color: var(--bg-default);
+  padding: 2rem 0;
+}
+
+footer a {
+  color: white;
+}
+
+footer a:hover {
+  color: black;
+}
+
+div.sosmed, div.links {
+  margin-bottom: 0.5rem;
+}
+
+div.sosmed a, div.links a {
+  margin-left: 1rem;
+}
+
+.modal {
+  background-color: rgba(0,0,0,0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  z-index: 100000;
+}
+
+.modal .modal-container {
+  width: 60rem;
+  padding: 1rem;
+  position: relative;
+  background-color: pink;
+  display: flex;
+  gap: 1rem;
+}
+
+.close-btn {
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 1%;
+}
+
+.close-btn:hover {
+  color: black;
+}
+
+.modal img {
+  height: 20rem;
+}
+
+.modal button {
+  padding: 0.6rem;
+  border: none;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: black;
+  color: white;
+}
+
+
+@media screen and (max-width: 1200px) {
+  div.contact-container {
+    flex-wrap: wrap;
+  }
+
+  div.contact-container div.map {
+    margin-bottom: -5rem;
+  }
+}
+
+@media screen and (max-width: 998px){
+  .about-text h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 768px){
+  html {
+    font-size: 85%;
+  }
+
+  .nav-link {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 50vw;
+    height: 100vh;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 7rem;
+    transition: all 1s;
+  }
+
+  .nav-link.active {
+    right: 0;
+    transition: all 1s;
+  }
+
+  .nav-link a {
+    color: black;
+  }
+
+  .nav-extra a.hamburger-icon {
+    display: inline-block;
+  }
+
+  .about-container {
+    flex-direction: column;
+  }
+
+  div.map iframe{
+    width: 360px;
+    height: 240px;
+  }
+}
+
+@media screen and (max-width: 650px){
+  html {
+    font-size: 70%;
+  }
+
+  div.map iframe {
+    width: 240px;
+    height: 160px;
+  }
+}
+
+

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script type="text/javascript"
+      src="https://app.sandbox.midtrans.com/snap/snap.js"
+      data-client-key="SB-Mid-client-QAIQv302fUz5OTst"></script>
+  <title>Kedai Kopi</title>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="" class="nav-icon">Kedai <span>Kopi</span></a>
+    <div class="nav-link">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#menu">Menu</a>
+      <a href="#product">Product</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+    <div class="searchbar">
+      <input type="search" placeholder="search" id="search">
+      <label for="search"><a href="" class="search-link"><i class="bi bi-search"></i></a></label>
+    </div>
+    <div class="shopping-cart">
+      <template x-data x-for="item in $store.cart.items">
+        <div class="shop-item">
+          <div class="shop-image">
+            <img :src="item.img" alt="item.name">
+          </div>
+          <div class="shop-text">
+            <h3 x-text="item.name"></h3>
+            <p >Rp. <span x-text="item.price"></span> X <span class="simbol minus" @click="$store.cart.remove(item)">-</span> <span x-text="item.itemQty">  </span> <span class="simbol plus" @click="$store.cart.add(item)">+</span> = Rp. <span x-text="item.itemTotal"></span></p>
+          </div>
+        </div>
+      </template>
+      <div class="kotak"></div>
+      <div class="cart-summary" x-data x-show="$store.cart.items.length > 0">
+        <p>Total: Rp. <span x-data x-text="$store.cart.total"></span></p>
+        <div class="form-buyer">
+          <form>
+            <h4>Buyer Form</h4>
+            <input type="hidden" name="total" x-model="$store.cart.total">
+            <input type="hidden" name="items" x-model="JSON.stringify($store.cart.items)">
+            <div class="input-group">
+              <i class="bi bi-person"></i>
+              <input type="text" placeholder="name" name="name" required>
+            </div>
+            <div class="input-group">
+              <i class="bi bi-envelope"></i>
+              <input type="email" placeholder="email" name="email" required>
+            </div>
+            <div class="input-group">
+              <i class="bi bi-telephone"></i>
+              <input type="text" placeholder="telephone number" name="telephone" required>
+            </div>
+            <button class="checkout">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="cart-summary" x-data x-show="$store.cart.items.length == 0">Cart is Empty</div>
+    </div>
+    <div class="nav-extra">
+      <a href="" class="search-icon"><i class="bi bi-search"></i></a>
+      <a href="" class="shop-icon"><i class="bi bi-cart"></i><span class="cart-num" x-data x-text="$store.cart.quantity" x-show="$store.cart.items.length > 0"></span></a>
+      <a href="" class="hamburger-icon"><i class="bi bi-list"></i></a>
+    </div>
+  </nav>
+  <section id="home" class="hero">
+    <main class="content">
+      <h1>Welcome to Kadai Kopi</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+      <!-- <button class="hero__btn">Beli Sekarang</button> -->
+    </main>
+  </section>
+  <section id="about">
+    <h2 class="title">About Us</h2>
+    <div class="about-container">
+      <div class="about-image">
+        <img src="./image/about.jpg" alt="about">
+      </div>
+      <div class="about-text">
+        <h3>Why choose our coffee?</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius aperiam voluptate earum, vero debitis voluptas eaque magnam excepturi veritatis! Ratione voluptatum adipisci quas tempora illo.
+        </p>
+      </div>
+    </div>
+  </section>
+  <section id="menu" class="menu">
+    <h2 class="title">Our Menu</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic, magni!</p>
+    <div class="menu-container">
+      <div class="card">
+        <img src="./image/menu1.jpg" alt="espresso">
+        <h3 class="menu-name">Espresso</h3>
+        <p class="menu-price">Rp. 25000</p>
+      </div>
+      <div class="card">
+        <img src="./image/menu1.jpg" alt="espresso">
+        <h3 class="menu-name">Espresso</h3>
+        <p class="menu-price">Rp. 25000</p>
+      </div>
+      <div class="card">
+        <img src="./image/menu1.jpg" alt="espresso">
+        <h3 class="menu-name">Espresso</h3>
+        <p class="menu-price">Rp. 25000</p>
+      </div>
+    </div>
+  </section>
+  <section id="product" class="product" x-data="products">
+    <h2 class="title">Our Product</h2>
+    <div class="product-container">
+      <template x-for="item in items">
+        <div class="product-card">
+          <div class="product-icon">
+            <a href="" class="detail-icon"><i class="bi bi-eye"></i></a>
+            <a href="" @click.prevent="$store.cart.add(item)"><i class="bi bi-bag"></i></a>
+          </div>
+          <div class="product-image">
+            <img :src="item.img" :alt="item.name">
+          </div>
+          <div class="product-text">
+            <h3 x-text="item.name"></h3>
+            <div class="product-rating">
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+              <i class="bi bi-star"></i>
+            </div>
+            <div class="product-price">
+              Rp. <span x-text="item.price"></span>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+  <section id="contact" class="contact">
+    <h2 class="title">Contact Us</h2>
+    <div class="contact-container">
+      <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15959.035338213997!2d100.3707859!3d-0.3128731!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fd53960a004573b%3A0xcfdc2b0aadc226c2!2sVOCA%20Kopi!5e0!3m2!1sen!2sid!4v1704102932818!5m2!1sen!2sid" 
+         allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="form-container">
+        <form action="">
+          <div class="input-group">
+            <i class="bi bi-person"></i>
+            <input type="text" placeholder="name">
+          </div>
+          <div class="input-group">
+            <i class="bi bi-envelope"></i>
+            <input type="email" placeholder="email">
+          </div>
+          <div class="input-group">
+            <i class="bi bi-telephone"></i>
+            <input type="text" placeholder="telephone">
+          </div>
+          <button>Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="sosmed">
+      <a href=""><i class="bi bi-facebook"></i></a>
+      <a href=""><i class="bi bi-twitter"></i></a>
+      <a href=""><i class="bi bi-instagram"></i></a>
+    </div>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About Us</a>
+      <a href="#menu">Menu</a>
+      <a href="#product">Product</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+    <div class="credit">
+      created by: <a href="">ahmatfirdaus</a> | &#169 reserved 2023
+    </div>
+  </footer>
+  <div class="modal">
+    <div class="modal-container">
+      <a href="" class="close-btn"><i class="bi bi-x"></i></a>
+      <div class="modal-image">
+        <img src="./image/product1.jpg" alt="">
+      </div>
+      <div class="modal-text">
+        <h3>Product 1</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat veniam nisi eveniet id iste culpa iusto aspernatur dignissimos asperiores facilis?</p>
+        <div class="product-rating">
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+          <i class="bi bi-star"></i>
+        </div>
+        <div class="product-price">
+          Rp. 45000 <span>Rp.70000</span>
+        </div>
+        <button><i class="bi bi-bag-plus"></i><span>
+          Add to Cart
+        </span></button>
+      </div>
+    </div>
+  </div>
+ <script src="./js/script.js"></script>
+ <script src="./js/alpine.js"></script>
+</body>
+</html>
