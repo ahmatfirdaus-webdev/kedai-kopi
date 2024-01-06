@@ -2,10 +2,10 @@ document.addEventListener('alpine:init', () => {
   Alpine.data('products', () => {
   return {
    items: [
-     {id: 1, name: 'Biji Kopi Gayo', price: 25000, img: '../image/product1.jpg'},
-     {id: 2, name: 'Biji Kopi Sumatera', price: 40000, img: '../image/product1.jpg'},
-     {id: 3, name: 'Biji Kopi Toraja', price: 30000, img: '../image/product1.jpg'},
-     {id: 4, name: 'Biji Kopi Hitam', price: 44000, img: '../image/product1.jpg'},
+     {id: 1, name: 'Biji Kopi Gayo', price: 25000, img: 'image/product1.jpg'},
+     {id: 2, name: 'Biji Kopi Sumatera', price: 40000, img: 'image/product1.jpg'},
+     {id: 3, name: 'Biji Kopi Toraja', price: 30000, img: 'image/product1.jpg'},
+     {id: 4, name: 'Biji Kopi Hitam', price: 44000, img: 'image/product1.jpg'}, 
    ]
   }
   });
